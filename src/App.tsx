@@ -11,7 +11,7 @@ type Score = {
 function App() {
   const [scores, setScores] = useState<Score[] | []>([]);
   useEffect(() => {
-    fetch("assets/data.json").then((response) =>
+    fetch("public/api/data.json").then((response) =>
       response.json().then((data) => setScores(data)),
     );
   }, []);

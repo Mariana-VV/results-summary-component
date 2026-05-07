@@ -1,19 +1,12 @@
 import { useEffect, useState } from "react";
 
 import "./App.scss";
-
-type Score = {
-  category: string;
-  score: number;
-  icon: string;
-};
+import { getData, type Score } from "./api/getData";
 
 function App() {
-  const [scores, setScores] = useState<Score[] | []>([]);
+  const [scores, setScores] = useState<Score[]>([]);
   useEffect(() => {
-    fetch("data.json").then((response) =>
-      response.json().then((data) => setScores(data)),
-    );
+    getData().then((data) => setScores(data));
   }, []);
 
   let sum = 0;
